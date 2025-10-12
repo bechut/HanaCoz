@@ -1,0 +1,171 @@
+[gd_scene load_steps=8 format=3 uid="uid://bdfypqd6qergv"]
+
+[ext_resource type="Texture2D" uid="uid://dly3x0ewod7pc" path="res://assets/ui/Modern_UI_Style_2_32x32.png" id="1_djojj"]
+[ext_resource type="PackedScene" uid="uid://ci14bguri1l7s" path="res://scenes/storage_slot_texture.tscn" id="2_3ahdm"]
+[ext_resource type="Script" uid="uid://dnh4keqe0p5bc" path="res://scripts/storage/StorageUi.cs" id="2_pf4g1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ahdm"]
+atlas = ExtResource("1_djojj")
+region = Rect2(16, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pf4g1"]
+atlas = ExtResource("1_djojj")
+region = Rect2(898, 832, 29, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2cyhs"]
+atlas = ExtResource("1_djojj")
+region = Rect2(962, 836, 28, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pqjgp"]
+atlas = ExtResource("1_djojj")
+region = Rect2(930, 833, 29, 29)
+
+[node name="StorageUi" type="NinePatchRect"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -192.0
+offset_top = -109.0
+offset_right = 260.0
+offset_bottom = 57.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_3ahdm")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+script = ExtResource("2_pf4g1")
+
+[node name="CloseBtn" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -2.0
+offset_top = -30.0
+offset_right = 38.0
+offset_bottom = 10.0
+grow_horizontal = 0
+texture_normal = SubResource("AtlasTexture_pf4g1")
+texture_pressed = SubResource("AtlasTexture_2cyhs")
+texture_hover = SubResource("AtlasTexture_pqjgp")
+stretch_mode = 1
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 14.0
+offset_right = 437.0
+offset_bottom = 153.0
+columns = 9
+
+[node name="StorageGrid" parent="GridContainer" instance=ExtResource("2_3ahdm")]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 2
+
+[node name="StorageGrid2" parent="GridContainer" instance=ExtResource("2_3ahdm")]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 2
+
+[node name="StorageGrid3" parent="GridContainer" instance=ExtResource("2_3ahdm")]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 2
+
+[node name="StorageGrid4" parent="GridContainer" instance=ExtResource("2_3ahdm")]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 2
+
+[node name="StorageGrid5" parent="GridContainer" instance=ExtResource("2_3ahdm")]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 2
+
+[node name="StorageGrid6" parent="GridContainer" instance=ExtResource("2_3ahdm")]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 2
+
+[node name="StorageGrid7" parent="GridContainer" instance=ExtResource("2_3ahdm")]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 2
+
+[node name="StorageGrid8" parent="GridContainer" instance=ExtResource("2_3ahdm")]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 2
+
+[node name="StorageGrid9" parent="GridContainer" instance=ExtResource("2_3ahdm")]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 2
+
+[node name="StorageGrid10" parent="GridContainer" instance=ExtResource("2_3ahdm")]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 2
+
+[node name="StorageGrid11" parent="GridContainer" instance=ExtResource("2_3ahdm")]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 2
+
+[node name="StorageGrid12" parent="GridContainer" instance=ExtResource("2_3ahdm")]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 2
+
+[node name="StorageGrid13" parent="GridContainer" instance=ExtResource("2_3ahdm")]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 2
+
+[node name="StorageGrid14" parent="GridContainer" instance=ExtResource("2_3ahdm")]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 2
+
+[node name="StorageGrid15" parent="GridContainer" instance=ExtResource("2_3ahdm")]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 2
+
+[node name="StorageGrid16" parent="GridContainer" instance=ExtResource("2_3ahdm")]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 2
+
+[node name="StorageGrid17" parent="GridContainer" instance=ExtResource("2_3ahdm")]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 2
+
+[node name="StorageGrid18" parent="GridContainer" instance=ExtResource("2_3ahdm")]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 2
+
+[node name="StorageGrid19" parent="GridContainer" instance=ExtResource("2_3ahdm")]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 2
+
+[node name="StorageGrid20" parent="GridContainer" instance=ExtResource("2_3ahdm")]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 2
+
+[node name="StorageGrid21" parent="GridContainer" instance=ExtResource("2_3ahdm")]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 2
+
+[node name="StorageGrid22" parent="GridContainer" instance=ExtResource("2_3ahdm")]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 2
+
+[node name="StorageGrid23" parent="GridContainer" instance=ExtResource("2_3ahdm")]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 2
+
+[node name="StorageGrid24" parent="GridContainer" instance=ExtResource("2_3ahdm")]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 2
+
+[node name="StorageGrid25" parent="GridContainer" instance=ExtResource("2_3ahdm")]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 2
+
+[node name="StorageGrid26" parent="GridContainer" instance=ExtResource("2_3ahdm")]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 2
+
+[node name="StorageGrid27" parent="GridContainer" instance=ExtResource("2_3ahdm")]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 2

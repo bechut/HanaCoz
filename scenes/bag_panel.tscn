@@ -1,0 +1,61 @@
+[gd_scene load_steps=2 format=3 uid="uid://bde8lqxtrwql3"]
+
+[ext_resource type="PackedScene" uid="uid://ci14bguri1l7s" path="res://scenes/storage_slot_texture.tscn" id="1_gmrx2"]
+
+[node name="BagPanel" type="GridContainer"]
+z_index = 1
+offset_left = 11.0
+offset_top = 10.0
+offset_right = 191.0
+offset_bottom = 144.0
+size_flags_horizontal = 4
+columns = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="Bag" parent="." instance=ExtResource("1_gmrx2")]
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+
+[node name="Bag2" parent="." instance=ExtResource("1_gmrx2")]
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+
+[node name="Bag3" parent="." instance=ExtResource("1_gmrx2")]
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+
+[node name="Bag4" parent="." instance=ExtResource("1_gmrx2")]
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+
+[node name="Bag5" parent="." instance=ExtResource("1_gmrx2")]
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+
+[node name="Bag6" parent="." instance=ExtResource("1_gmrx2")]
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+
+[node name="Bag7" parent="." instance=ExtResource("1_gmrx2")]
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+
+[node name="Bag8" parent="." instance=ExtResource("1_gmrx2")]
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+
+[node name="Bag9" parent="." instance=ExtResource("1_gmrx2")]
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+
+[node name="Bag10" parent="." instance=ExtResource("1_gmrx2")]
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+
+[node name="Bag11" parent="." instance=ExtResource("1_gmrx2")]
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+
+[node name="Bag12" parent="." instance=ExtResource("1_gmrx2")]
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
