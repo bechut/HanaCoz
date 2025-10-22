@@ -10,10 +10,13 @@ public partial class InteractiveUi : Control
     {
         _hint = GetNode<Control>("Hint");
         _hint.Visible = false;
+        
+        SignalBus.Instance.On(SignalNames.Behavior.PlayerIsNearInteractiveZone, this, PlayerIsNearInteractiveZone);
     }
-
-    public void ShowHint(bool isOpen)
+    
+    private void PlayerIsNearInteractiveZone(Variant[] args)
     {
-        _hint.Visible = isOpen;
+        var isNear = args[0].AsBool();
+        _hint.Visible = isNear;
     }
 }

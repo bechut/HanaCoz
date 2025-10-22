@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using Godot;
 using HanaCoz.Helpers.Models;
 using Microsoft.Data.Sqlite;
 
@@ -34,6 +35,8 @@ public class StorageService(SqliteConnection connection)
             storage ??= DataMapper.StorageEntityMapper(reader);
             storage.Items.Add(DataMapper.StorageItemEntityMapper(reader));
         }
+
+        GD.Print("GetStorageByCode");
         return storage;
     }
     

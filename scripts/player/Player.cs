@@ -5,6 +5,7 @@ using HanaCoz.Helpers.Models;
 using HanaCoz.Helpers.Player;
 using HanaCoz.Helpers.Signal;
 using HanaCoz.Utils.FiniteStateMachine;
+using HanaCoz.Scripts.Cabinet;
 
 namespace HanaCoz.Scripts.Player;
 
@@ -15,10 +16,11 @@ public partial class Player : CharacterBody2D
     public AnimatedSprite2D Hair;
     public string LastDir { get; private set; } = "d";
     public bool IsSit { get; set; }
-    public bool CanInteract { get; set; }
+    private bool CanInteract { get; set; }
     public bool CanMove { get; set; } = true;
 
     private PlayerEntity _data;
+    private Cabinet.Cabinet _cabinet;
     public PlayerEntity Data
     {
         get => _data;
@@ -56,8 +58,27 @@ public partial class Player : CharacterBody2D
         
         OnChangePlayerAsset();
         
+        SignalBus.Instance.On(SignalNames.Behavior.PlayerIsNearInteractiveZone, this, PlayerIsNearInteractiveZone);
+        SignalBus.Instance.On(SignalNames.Action.PlayerOpenCloseCabinet, this, PlayerOpenCloseCabinet);
+        
+    }
+
+    private void PlayerIsNearInteractiveZone(Variant[] args)
+    {
+        var isNear = args[0].AsBool();
+        CanInteract = isNear;
+        if (args[1].AsGodotObject() is Cabinet.Cabinet cabinet)
+        {
+            _cabinet = cabinet;
+        }
     }
     
+    private void PlayerOpenCloseCabinet(Variant[] args)
+    {
+        var isOpen = args[0].AsBool();
+        CanMove = !isOpen;
+    }
+
     public override void _PhysicsProcess(double delta)
     {
         if (CanMove)
@@ -72,7 +93,7 @@ public partial class Player : CharacterBody2D
         {
             if (CanInteract)
             {
-                SignalBus.Instance.Emit(SignalNames.MainName.FetchStorageData);
+                SignalBus.Instance.Emit(SignalNames.Action.PlayerOpenCloseCabinet, !_cabinet.IsOpen, _cabinet);
             }
         }
     }

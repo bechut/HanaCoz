@@ -22,4 +22,14 @@ public static class SignalNames
         public const string ContextMenuClose = "ContextMenu.Close";
         public const string CurrentSlotTexture = "SlotTexture.Current";
     }
+
+    public static class Action
+    {
+        public const string PlayerOpenCloseCabinet = "Action.PlayerOpenCloseCabinet";
+        public const string StorageItemDragAndDrop = "Action.StorageItemDragAndDrop";
+    } 
+    public static class Behavior
+    {
+        public const string PlayerIsNearInteractiveZone = "Behavior.PlayerIsNearInteractiveZone";
+    } 
 }

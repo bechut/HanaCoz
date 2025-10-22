@@ -1,8 +1,7 @@
-using System.Text.Json;
 using Godot;
-using HanaCoz.Helpers;
 using HanaCoz.Helpers.Models;
 using HanaCoz.Helpers.Signal;
+using System;
 
 namespace HanaCoz.Scripts.Storage;
 public partial class StorageUi : NinePatchRect
@@ -17,7 +16,11 @@ public partial class StorageUi : NinePatchRect
         set
         {
             _data = value;
-            OnLoadData();
+            if (_data != null)
+            {
+                OnLoadData();
+            }
+            Visible = value is not null;
         }
     }
     public override void _Ready()
@@ -34,8 +37,9 @@ public partial class StorageUi : NinePatchRect
         SignalBus.Instance.Emit(SignalNames.MainName.CloseStorage);
     }
 
-    public void OnLoadData()
+    private void OnLoadData()
     {
+        if (_data == null) throw new Exception("Load storage data failed");
         for (var i = 0; i < _gridContainer.GetChildCount(); i++)
         {
             var child = _gridContainer.GetChild(i);

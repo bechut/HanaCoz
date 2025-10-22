@@ -6,9 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://bvrb2nbrgebn4" path="res://scenes/player_menu.tscn" id="5_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://dydm3jxal1px5" path="res://scenes/interactive_ui.tscn" id="5_tefeu"]
 [ext_resource type="AudioStream" uid="uid://bvyls28je4nnv" path="res://assets/mp3/cozy-lofi-beat-split-memmories-248205.mp3" id="6_85g3d"]
-[ext_resource type="Texture2D" path="res://assets/room_builder/floor.png" id="6_tefeu"]
-[ext_resource type="Texture2D" path="res://assets/room_builder/wall.png" id="7_tipki"]
-[ext_resource type="Texture2D" path="res://assets/room_builder/border.png" id="8_85g3d"]
+[ext_resource type="Texture2D" uid="uid://dxqqey88o7a2x" path="res://assets/room_builder/floor.png" id="6_tefeu"]
+[ext_resource type="Texture2D" uid="uid://ddtejwvgxskrf" path="res://assets/room_builder/wall.png" id="7_tipki"]
+[ext_resource type="Texture2D" uid="uid://c2c1n50ks08xb" path="res://assets/room_builder/border.png" id="8_85g3d"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o6xl0"]
 texture = ExtResource("6_tefeu")

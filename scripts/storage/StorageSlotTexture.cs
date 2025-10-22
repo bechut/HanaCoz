@@ -90,9 +90,8 @@ public partial class StorageSlotTexture : TextureRect
         {
             if (HasMeta("meta"))
             {
-                var meta = this.GetMeta("meta").AsGodotDictionary();
+                var meta = GetMeta("meta").AsGodotDictionary();
                 if (!meta.ContainsKey("ItemId")) return;
-                GD.Print(this.GetMeta("meta"));
                 if (_activeContextMenu != null && _activeContextMenu != _contextMenu)
                 {
                     _activeContextMenu.Hide();
@@ -100,7 +99,7 @@ public partial class StorageSlotTexture : TextureRect
                 _contextMenu.Show();
                 _contextMenu.Position = GlobalPosition + Size;
                 _activeContextMenu = _contextMenu;
-                SignalBus.Instance.Emit(SignalNames.UiName.CurrentSlotTexture, this);
+                SignalBus.Instance.Emit(SignalNames.Action.StorageItemDragAndDrop, this);
             }
         }
     }
