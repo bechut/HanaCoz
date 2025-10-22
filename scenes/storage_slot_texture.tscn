@@ -1,0 +1,91 @@
+[gd_scene load_steps=9 format=3 uid="uid://ci14bguri1l7s"]
+
+[ext_resource type="Texture2D" path="res://assets/ui/Modern_UI_Style_2_32x32.png" id="1_27kvu"]
+[ext_resource type="Script" uid="uid://b45pso4v3rqja" path="res://scripts/storage/StorageSlotTexture.cs" id="3_5ujk0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ujk0"]
+atlas = ExtResource("1_27kvu")
+region = Rect2(26, 186, 44, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c5q6n"]
+atlas = ExtResource("1_27kvu")
+region = Rect2(24, 470, 48, 50)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_27kvu"]
+atlas = ExtResource("1_27kvu")
+region = Rect2(490, 932, 44, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_njjyq"]
+atlas = ExtResource("1_27kvu")
+region = Rect2(490, 836, 44, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hjfhn"]
+atlas = ExtResource("1_27kvu")
+region = Rect2(490, 900, 44, 22)
+
+[sub_resource type="LabelSettings" id="LabelSettings_27kvu"]
+font_size = 14
+
+[node name="StorageGrid" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Slot" type="TextureRect" parent="."]
+layout_mode = 0
+mouse_filter = 0
+texture = SubResource("AtlasTexture_5ujk0")
+
+[node name="SlotTexture" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 41.0
+offset_bottom = 40.0
+expand_mode = 1
+stretch_mode = 1
+script = ExtResource("3_5ujk0")
+
+[node name="ContextMenu" type="NinePatchRect" parent="."]
+top_level = true
+z_index = 1
+layout_mode = 0
+offset_left = 43.0
+offset_top = -6.0
+offset_right = 129.0
+offset_bottom = 51.0
+texture = SubResource("AtlasTexture_c5q6n")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="TextureButton" type="TextureButton" parent="ContextMenu"]
+z_index = 2
+z_as_relative = false
+custom_minimum_size = Vector2(50, 25)
+layout_mode = 1
+offset_left = 8.0
+offset_top = 9.0
+offset_right = 78.0
+offset_bottom = 35.0
+texture_normal = SubResource("AtlasTexture_27kvu")
+texture_pressed = SubResource("AtlasTexture_njjyq")
+texture_hover = SubResource("AtlasTexture_hjfhn")
+stretch_mode = 1
+
+[node name="Label" type="Label" parent="ContextMenu"]
+z_index = 1
+layout_mode = 0
+offset_left = 21.0
+offset_top = 12.0
+offset_right = 70.0
+offset_bottom = 35.0
+text = "Equip"
+label_settings = SubResource("LabelSettings_27kvu")
+uppercase = true

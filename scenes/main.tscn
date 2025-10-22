@@ -1,0 +1,176 @@
+[gd_scene load_steps=15 format=4 uid="uid://dm0sqhn71q0hf"]
+
+[ext_resource type="Script" uid="uid://bgndh3t2mc0k6" path="res://Main.cs" id="1_0wfyh"]
+[ext_resource type="PackedScene" uid="uid://jth8q805lfn1" path="res://scenes/cabinet.tscn" id="3_sugp2"]
+[ext_resource type="PackedScene" uid="uid://bdfypqd6qergv" path="res://scenes/storage_ui.tscn" id="4_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://bvrb2nbrgebn4" path="res://scenes/player_menu.tscn" id="5_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://dydm3jxal1px5" path="res://scenes/interactive_ui.tscn" id="5_tefeu"]
+[ext_resource type="AudioStream" uid="uid://bvyls28je4nnv" path="res://assets/mp3/cozy-lofi-beat-split-memmories-248205.mp3" id="6_85g3d"]
+[ext_resource type="Texture2D" uid="uid://dxqqey88o7a2x" path="res://assets/room_builder/floor.png" id="6_tefeu"]
+[ext_resource type="Texture2D" uid="uid://ddtejwvgxskrf" path="res://assets/room_builder/wall.png" id="7_tipki"]
+[ext_resource type="Texture2D" uid="uid://c2c1n50ks08xb" path="res://assets/room_builder/border.png" id="8_85g3d"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o6xl0"]
+texture = ExtResource("6_tefeu")
+texture_region_size = Vector2i(32, 32)
+4:30/0 = 0
+5:30/0 = 0
+6:30/0 = 0
+6:31/0 = 0
+5:31/0 = 0
+4:31/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_tipki"]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_o6xl0")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_choun"]
+texture = ExtResource("7_tipki")
+texture_region_size = Vector2i(32, 32)
+0:21/0 = 0
+1:21/0 = 0
+1:22/0 = 0
+1:23/0 = 0
+0:22/0 = 0
+0:23/0 = 0
+0:24/0 = 0
+0:25/0 = 0
+1:25/0 = 0
+1:24/0 = 0
+0:26/0 = 0
+1:26/0 = 0
+2:26/0 = 0
+3:26/0 = 0
+4:26/0 = 0
+5:26/0 = 0
+3:25/0 = 0
+4:25/0 = 0
+4:24/0 = 0
+4:24/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+3:24/0 = 0
+3:24/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+3:23/0 = 0
+3:23/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+4:23/0 = 0
+4:23/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+3:22/0 = 0
+4:22/0 = 0
+4:21/0 = 0
+3:21/0 = 0
+6:21/0 = 0
+6:22/0 = 0
+6:23/0 = 0
+6:24/0 = 0
+6:25/0 = 0
+6:26/0 = 0
+7:21/0 = 0
+7:22/0 = 0
+7:23/0 = 0
+7:24/0 = 0
+7:25/0 = 0
+7:26/0 = 0
+6:27/0 = 0
+7:27/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ya4ey"]
+texture = ExtResource("8_85g3d")
+texture_region_size = Vector2i(32, 32)
+9:7/0 = 0
+10:7/0 = 0
+11:7/0 = 0
+11:8/0 = 0
+10:8/0 = 0
+9:8/0 = 0
+12:7/0 = 0
+9:5/0 = 0
+10:5/0 = 0
+11:5/0 = 0
+12:5/0 = 0
+10:6/0 = 0
+11:6/0 = 0
+12:6/0 = 0
+6:6/0 = 0
+6:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(2, -16, 16, -16, 16, 16, 2, 16)
+7:6/0 = 0
+7:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, -4, -16, -4)
+8:6/0 = 0
+8:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, -2, -16, -2, 16, -16, 16)
+8:7/0 = 0
+8:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, -2, -16, -2, 16, -16, 16)
+8:8/0 = 0
+8:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, -2, -16, -2, -4, -16, -4)
+7:8/0 = 0
+7:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, -4, -16, -4)
+6:8/0 = 0
+6:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(2, -16, 16, -16, 16, -4, 2, -4)
+6:7/0 = 0
+6:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(2, -16, 16, -16, 16, 16, 2, 16)
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+0:7/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+3:7/0 = 0
+4:7/0 = 0
+0:8/0 = 0
+1:8/0 = 0
+2:8/0 = 0
+3:8/0 = 0
+4:8/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_eb6dy"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_choun")
+sources/1 = SubResource("TileSetAtlasSource_ya4ey")
+
+[node name="Main" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_0wfyh")
+
+[node name="Cabinet" parent="." instance=ExtResource("3_sugp2")]
+y_sort_enabled = true
+position = Vector2(163, 74)
+Code = "001"
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="InteractiveUI" parent="UI" instance=ExtResource("5_tefeu")]
+mouse_filter = 1
+
+[node name="StorageUI" parent="UI" instance=ExtResource("4_jyhfs")]
+offset_left = -534.0
+offset_top = 58.0
+offset_right = -82.0
+offset_bottom = 224.0
+
+[node name="PlayerMenu" parent="UI" instance=ExtResource("5_tbgi4")]
+offset_left = 153.0
+offset_top = 195.0
+offset_right = 371.0
+offset_bottom = 367.0
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="UI"]
+stream = ExtResource("6_85g3d")
+volume_db = -2.0
+parameters/looping = true
+
+[node name="Floor" type="TileMapLayer" parent="."]
+z_index = -1
+z_as_relative = false
+tile_map_data = PackedByteArray("AAADAAIAAAAFAB8AAAAEAAIAAAAFAB8AAAAFAAIAAAAGAB8AAAAGAAIAAAAFAB8AAAAHAAIAAAAFAB8AAAACAAIAAAAFAB8AAAACAAMAAAAFAB8AAAACAAQAAAAFAB8AAAACAAUAAAAFAB8AAAADAAUAAAAFAB8AAAAEAAUAAAAFAB8AAAAFAAUAAAAFAB8AAAAGAAUAAAAFAB8AAAAHAAUAAAAFAB8AAAAHAAMAAAAFAB8AAAAHAAQAAAAFAB8AAAAFAAQAAAAFAB8AAAAEAAQAAAAFAB8AAAADAAQAAAAFAB8AAAADAAMAAAAFAB8AAAAEAAMAAAAFAB8AAAAFAAMAAAAFAB8AAAAGAAMAAAAFAB8AAAAGAAQAAAAFAB8AAAAAAAIAAAAFAB8AAAABAAMAAAAFAB8AAAABAAQAAAAFAB8AAAABAAIAAAAFAB8AAAAAAAMAAAAFAB8AAAAAAAQAAAAFAB8AAAAAAAUAAAAFAB8AAAABAAUAAAAFAB8AAAAIAAIAAAAFAB8AAAAJAAIAAAAFAB8AAAAJAAUAAAAFAB8AAAAIAAUAAAAFAB8AAAAIAAQAAAAFAB8AAAAIAAMAAAAFAB8AAAAJAAMAAAAFAB8AAAAJAAQAAAAFAB8AAAAAAAAAAAAFAB8AAAAAAAEAAAAFAB8AAAABAAEAAAAFAB8AAAACAAEAAAAFAB8AAAADAAEAAAAFAB8AAAAEAAEAAAAFAB8AAAADAAAAAAAFAB8AAAACAAAAAAAFAB8AAAABAAAAAAAFAB8AAAAEAAAAAAAFAB8AAAAFAAAAAAAFAB8AAAAGAAAAAAAFAB8AAAAHAAAAAAAFAB8AAAAIAAAAAAAFAB8AAAAJAAAAAAAFAB8AAAAJAAEAAAAFAB8AAAAIAAEAAAAFAB8AAAAHAAEAAAAFAB8AAAAGAAEAAAAFAB8AAAAFAAEAAAAFAB8AAAAKAAAAAAAFAB8AAAAKAAEAAAAFAB8AAAAKAAIAAAAFAB8AAAAKAAMAAAAFAB8AAAAKAAQAAAAFAB8AAAAKAAUAAAAFAB8AAAABAAYAAAAFAB8AAAACAAYAAAAFAB8AAAADAAYAAAAFAB8AAAAEAAYAAAAFAB8AAAAFAAYAAAAFAB8AAAAGAAYAAAAFAB8AAAAHAAYAAAAFAB8AAAAIAAYAAAAFAB8AAAAJAAYAAAAFAB8AAAAKAAYAAAAFAB8AAAAAAAYAAAAFAB8AAAA=")
+tile_set = SubResource("TileSet_tipki")
+
+[node name="Wall" type="TileMapLayer" parent="."]
+z_as_relative = false
+y_sort_enabled = true
+tile_map_data = PackedByteArray("AAAAAP7/AAADABcAAAAAAP//AAADABgAAAABAP7/AAAEABcAAAABAP//AAAEABgAAAACAP7/AAADABcAAAACAP//AAADABgAAAADAP7/AAAEABcAAAADAP//AAAEABgAAAAEAP7/AAADABcAAAAEAP//AAADABgAAAAFAP7/AAAEABcAAAAFAP//AAAEABgAAAAGAP7/AAADABcAAAAGAP//AAADABgAAAAHAP7/AAAEABcAAAAHAP//AAAEABgAAAAIAP7/AAADABcAAAAIAP//AAADABgAAAAJAP7/AAAEABcAAAAJAP//AAAEABgAAAAKAP7/AAADABcAAAAKAP//AAADABgAAAD///7/AQAGAAYAAAD/////AQAGAAcAAAD//wAAAQAGAAcAAAD//wEAAQAGAAcAAAD//wIAAQAGAAcAAAD//wMAAQAGAAcAAAD//wQAAQAGAAcAAAD//wUAAQAGAAcAAAD//wcAAQAGAAgAAAD//wYAAQAGAAcAAAAAAAcAAQAHAAgAAAABAAcAAQAHAAgAAAACAAcAAQAHAAgAAAADAAcAAQAHAAgAAAAEAAcAAQAHAAgAAAAFAAcAAQAHAAgAAAAGAAcAAQAHAAgAAAAHAAcAAQAHAAgAAAAIAAcAAQAHAAgAAAAJAAcAAQAHAAgAAAAKAAcAAQAHAAgAAAALAAcAAQAIAAgAAAALAAAAAQAIAAcAAAALAAEAAQAIAAcAAAALAAIAAQAIAAcAAAALAAMAAQAIAAcAAAALAAQAAQAIAAcAAAALAAUAAQAIAAcAAAALAAYAAQAIAAcAAAALAP//AQAIAAcAAAALAP7/AQAIAAYAAAA=")
+tile_set = SubResource("TileSet_eb6dy")
