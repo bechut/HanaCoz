@@ -17,8 +17,18 @@ public partial class Player : CharacterBody2D
     public bool IsSit { get; set; }
     public bool CanInteract { get; set; }
     public bool CanMove { get; set; } = true;
-    public PlayerEntity Data;
-    
+
+    private PlayerEntity _data;
+    public PlayerEntity Data
+    {
+        get => _data;
+        set
+        {
+            _data = value;
+            OnChangePlayerAsset();
+        }
+    }
+
     public enum PlayerStateType
     {
         Idle,
@@ -63,7 +73,6 @@ public partial class Player : CharacterBody2D
             if (CanInteract)
             {
                 SignalBus.Instance.Emit(SignalNames.MainName.FetchStorageData);
-                CanMove = false;
             }
         }
     }
@@ -75,8 +84,8 @@ public partial class Player : CharacterBody2D
             Helper.ChangeAnim(Outfit, "");
             Helper.ChangeAnim(Hair, "");
         
-            PlayerUtils.ApplyEquippedAnim("outfit", Outfit, Data);
-            PlayerUtils.ApplyEquippedAnim("hairstyle", Hair, Data);
+            PlayerUtils.ApplyEquippedAnim("outfit", Outfit, _data);
+            PlayerUtils.ApplyEquippedAnim("hairstyle", Hair, _data);
         }
         catch (Exception e)
         {

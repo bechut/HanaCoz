@@ -1,4 +1,3 @@
-using System;
 using Godot;
 using HanaCoz.Helpers;
 using HanaCoz.Helpers.Models;
@@ -19,21 +18,22 @@ public partial class Main : Node2D
     private Player _player;
     private Cabinet _cabinet;
     private StorageSlotTexture _slotTexture;
-    private MainEntity _data;
-    private PlayerPanel _playerPanel;
+    private Node _currentPanel;
+    
+    private MainEntity _mainData;
     
     public override void _Ready()
     {
-        _data = Global.MainService.GetData();
+        _mainData = Global.MainService.GetData();
 
         _playerMenu = GetNode<PlayerMenu>("UI/PlayerMenu");
         _storageUi =  GetNode<StorageUi>("UI/StorageUI");
         _interactiveUi = GetNode<InteractiveUi>("UI/InteractiveUI");
 
-        if (_data is { Level.Player: not null })
+        if (_mainData is { Level.Player: not null })
         {
             _player?.QueueFree();
-            _player = MainPlayer.Load(_data.Level.Player);
+            _player = MainPlayer.Load(_mainData.Level.Player);
             AddChild(_player);
         }
         
@@ -50,7 +50,7 @@ public partial class Main : Node2D
     private void OnEquipItem(Variant[] args)
     {
         var meta = args[0].AsGodotDictionary();
-        if (_data is { Level.Player: not null })
+        if (_mainData is { Level.Player: not null })
         {
             var itemType = meta["Type"].ToString();
             
@@ -59,11 +59,15 @@ public partial class Main : Node2D
             
             Global.PlayerService.UpdatePlayerItemItem(playerItem.Id, meta["ItemItemId"].AsInt32());
             Global.StorageService.UpdateStorageItemItem(meta["ItemId"].AsInt32(), playerItem.Item.Id);
-            var data = Global.StorageService.GetStorageByCode(_cabinet.Code);
-            _storageUi.OnLoadData(data);
+            
+            var updatedStorage = Global.StorageService.GetStorageByCode(_cabinet.Code);
+            _storageUi.Data = updatedStorage;
             var updatedPlayer = Global.PlayerService.GetMainPlayer();
             _player.Data = updatedPlayer;
-            _player.OnChangePlayerAsset();
+            if (_currentPanel is PlayerPanel p)
+            {
+                p?.LoadTexture(_player.Data.Items);
+            }
         }
     }
         
@@ -84,7 +88,6 @@ public partial class Main : Node2D
             _player = player;
             _player.CanInteract = isNear;
         };
-        
     }
     
     private void OnCloseStorage(Variant[] args)
@@ -92,6 +95,8 @@ public partial class Main : Node2D
         _cabinet.OnClose();
         _storageUi.OnOpenClose(false);
         _player.CanMove = true;
+        _slotTexture?.CloseContextMenu();
+
     }
 
     private void OnFetchStorageData(Variant[] args)
@@ -99,15 +104,15 @@ public partial class Main : Node2D
         if (_cabinet == null) return;
         if (_cabinet.CheckOpen())
         {
-            _cabinet.OnClose();
-            _storageUi.OnOpenClose(false);
+            OnCloseStorage(args);
         }
         else
         {
             var data = Global.StorageService.GetStorageByCode(_cabinet.Code);
             _cabinet.OnOpen(data);
             _storageUi.OnOpenClose(true);
-            _storageUi.OnLoadData(data);
+            _storageUi.Data = data;
+            _player.CanMove = false;
         }
     }
     
@@ -126,16 +131,17 @@ public partial class Main : Node2D
                 Global.StorageService.UpdateItemOrder(targetMeta["ItemId"].AsInt32(), sourceMeta["ItemOrder"].AsInt32());
             }
             var data = Global.StorageService.GetStorageByCode(_cabinet.Code);
-            _storageUi.OnLoadData(data);
+            _storageUi.Data = data;
         }
     }
 
     private void OnReceiveCurrentPlayerPanel(Variant[] args)
     {
-        var panel = args[0].AsGodotObject() as PlayerPanel;
-        if (_data is { Level.Player: not null })
+        var panel = args[0].AsGodotObject() as Node;
+        _currentPanel = panel;
+        if (_player.Data != null && _currentPanel is PlayerPanel p)
         {
-            panel?.LoadTexture(_data.Level.Player.Items);
+            p?.LoadTexture(_player.Data.Items);
         }
     }
 

@@ -9,6 +9,17 @@ public partial class StorageUi : NinePatchRect
 {
     private GridContainer _gridContainer;
     private TextureButton _closeBtn;
+    
+    private StorageEntity _data;
+    public StorageEntity Data
+    {
+        get => _data;
+        set
+        {
+            _data = value;
+            OnLoadData();
+        }
+    }
     public override void _Ready()
     {
         Visible = false;
@@ -23,7 +34,7 @@ public partial class StorageUi : NinePatchRect
         SignalBus.Instance.Emit(SignalNames.MainName.CloseStorage);
     }
 
-    public void OnLoadData(StorageEntity data)
+    public void OnLoadData()
     {
         for (var i = 0; i < _gridContainer.GetChildCount(); i++)
         {
@@ -33,11 +44,11 @@ public partial class StorageUi : NinePatchRect
             var meta = new Godot.Collections.Dictionary();
             meta.Add("ItemOrder", i);
             meta.Add("From", "storage");
-            meta.Add("StorageCode", data.Code);
-            var exists = data.Items.Exists(x => x.ItemOrder == i);
+            meta.Add("StorageCode", _data.Code);
+            var exists = _data.Items.Exists(x => x.ItemOrder == i);
             if (exists)
             {
-                var d = data.Items.Find(x => x.ItemOrder == i);
+                var d = _data.Items.Find(x => x.ItemOrder == i);
                 meta.Add("ItemId", d.Id);
                 meta.Add("ItemItemId", d.Item.Id);
                 meta.Add("Type", d.Item.Type);
