@@ -10,6 +10,17 @@ public partial class PlayerPanel : Control
     private Control _outfit;
     private Control _hair;
     private PackedScene _texture;
+    
+    private List<PlayerItemEntity> _data;
+    public List<PlayerItemEntity> Data
+    {
+        get => _data;
+        set
+        {
+            _data = value;
+            LoadTexture();
+        }
+    }
 
     public override void _Ready()
     {   
@@ -21,11 +32,11 @@ public partial class PlayerPanel : Control
         //     GD.PrintErr("Failed to load panel_slot_texture!");
     }
 
-    public void LoadTexture(List<PlayerItemEntity> items)
+    public void LoadTexture()
     {
-        for (int i = 0; i < items.Count; i++)
+        for (int i = 0; i < _data.Count; i++)
         {
-            var item = items[i];
+            var item = _data[i];
             var meta = new Godot.Collections.Dictionary();
             meta.Add("ItemOrder", i);
             meta.Add("From", item.Type);
@@ -49,7 +60,6 @@ public partial class PlayerPanel : Control
                 Atlas = texture,
                 Region = new Rect2(item.Item.RegionX, item.Item.RegionY, item.Item.RegionW, item.Item.RegionH)
             };
-            GD.Print(texture);
         }
     }
 }

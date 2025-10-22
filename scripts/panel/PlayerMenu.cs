@@ -58,7 +58,7 @@ public partial class PlayerMenu : NinePatchRect
 
         var p = _panelScene.Instantiate();
         _panel.AddChild(p);
-        SignalBus.Instance.Emit(SignalNames.UiName.CurrentPlayerPanel, p);
+        SignalBus.Instance.Emit(SignalNames.Action.OpenPlayerMenu, p);
         
     }
 

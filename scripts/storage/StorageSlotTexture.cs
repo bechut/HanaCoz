@@ -27,10 +27,9 @@ public partial class StorageSlotTexture : TextureRect
         if (HasMeta("meta"))
         {
             var meta = GetMeta("meta").AsGodotDictionary();
-            GD.Print(meta);
             if (meta["From"].ToString() is "storage")
             {
-                SignalBus.Instance.Emit(SignalNames.MainName.EquipItem, meta);
+                SignalBus.Instance.Emit(SignalNames.Action.PlayerEquipItemFromStorage, meta);
             }
         }
     }
@@ -98,13 +97,17 @@ public partial class StorageSlotTexture : TextureRect
                 _contextMenu.Show();
                 _contextMenu.Position = GlobalPosition + Size;
                 _activeContextMenu = _contextMenu;
-                SignalBus.Instance.Emit(SignalNames.Action.StorageItemDragAndDrop, this);
             }
+        }
+
+        if (@event is InputEventMouseButton { ButtonIndex: MouseButton.Left, Pressed: true })
+        {
+            CloseContextMenu();
         }
     }
 
     public void CloseContextMenu()
-    { 
+    {
         _contextMenu.Hide();
         _activeContextMenu = null;
     }

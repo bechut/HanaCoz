@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using HanaCoz.Helpers.Models;
 using Microsoft.Data.Sqlite;
@@ -7,6 +6,18 @@ namespace HanaCoz.Helpers.Services;
 
 public class PlayerService(SqliteConnection connection)
 {
+    public void UpdatePlayer(int playerId, float posX, float posY)
+    {
+        const string query = "UPDATE player SET pos_x = @pos_x, pos_y = @pos_y WHERE id = @id;";
+    
+        using var command = connection.CreateCommand();
+        command.CommandText = query;
+        command.Parameters.AddWithValue("@id", playerId);
+        command.Parameters.AddWithValue("@pos_x", posX);
+        command.Parameters.AddWithValue("@pos_y", posY);
+        command.ExecuteNonQuery();
+    }
+    
     public void UpdatePlayerItemItem(int playerItemId, int itemId)
     {
         const string query = "UPDATE player_item SET item_id = @item_id WHERE id = @id;";

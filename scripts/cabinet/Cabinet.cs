@@ -39,6 +39,10 @@ public partial class Cabinet : StaticBody2D
     {
         if (body is not Player.Player player) return; 
         SignalBus.Instance.Emit(SignalNames.Behavior.PlayerIsNearInteractiveZone, false, this);
+        if (IsOpen)
+        {
+            SignalBus.Instance.Emit(SignalNames.Action.PlayerOpenCloseCabinet, false, this);
+        }
     }
 
     private void OnOpen()

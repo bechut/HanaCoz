@@ -16,8 +16,8 @@ public class PlayerEntity
 {
     public int Id { get; set; }
     public string Code { get; init; } = "";
-    public int PosX { get; init; }
-    public int PosY { get; init; }
+    public float PosX { get; init; }
+    public float PosY { get; init; }
     public int Speed { get; init; }
     public List<PlayerItemEntity> Items { get; init; } = [];
 }

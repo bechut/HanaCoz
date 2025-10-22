@@ -7,7 +7,6 @@ namespace HanaCoz.Scripts.Storage;
 public partial class StorageUi : NinePatchRect
 {
     private GridContainer _gridContainer;
-    private TextureButton _closeBtn;
     
     private StorageEntity _data;
     public StorageEntity Data
@@ -27,14 +26,6 @@ public partial class StorageUi : NinePatchRect
     {
         Visible = false;
         _gridContainer = GetNode<GridContainer>("GridContainer");
-        _closeBtn = GetNode<TextureButton>("CloseBtn");
-
-        _closeBtn.Pressed += OnCloseButtonPressed;
-    }
-    
-    private void OnCloseButtonPressed()
-    {
-        SignalBus.Instance.Emit(SignalNames.MainName.CloseStorage);
     }
 
     private void OnLoadData()
@@ -72,10 +63,5 @@ public partial class StorageUi : NinePatchRect
     public void OnOpenClose(bool isOpen)
     {
         Visible = isOpen;
-    }
-    
-    public override void _ExitTree()
-    {
-        _closeBtn.Pressed -= OnCloseButtonPressed;
     }
 }
