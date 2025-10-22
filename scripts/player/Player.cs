@@ -17,10 +17,10 @@ public partial class Player : CharacterBody2D
     public string LastDir { get; private set; } = "d";
     public bool IsSit { get; set; }
     private bool CanInteract { get; set; }
-    public bool CanMove { get; set; } = true;
+    private bool CanMove { get; set; } = true;
 
     private PlayerEntity _data;
-    private Cabinet.Cabinet _cabinet;
+    public Cabinet.Cabinet _cabinet;
     public PlayerEntity Data
     {
         get => _data;

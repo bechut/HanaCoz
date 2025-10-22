@@ -71,9 +71,8 @@ public partial class StorageSlotTexture : TextureRect
             if (meta["ItemOrder"].ToString() == sourceMeta["ItemOrder"].ToString()) return;
             if (sourceMeta["ItemOrder"].AsInt32() > -1)
             {
-                SignalBus.Instance.Emit(SignalNames.MainName.UpdateStorageItemOrder, this, source);
+                SignalBus.Instance.Emit(SignalNames.Action.StorageItemDragAndDrop, this, source);
             }
-            
         }
     }
     

@@ -17,7 +17,6 @@ public partial class Main : Node2D
     private StorageUi _storageUi;
     private InteractiveUi _interactiveUi;
     private Player _player;
-    private Cabinet _cabinet;
     private StorageSlotTexture _slotTexture;
     private Node _currentPanel;
     
@@ -48,6 +47,7 @@ public partial class Main : Node2D
         // SignalBus.Instance.On(SignalNames.MainName.EquipItem, this, OnEquipItem);
         
         SignalBus.Instance.On(SignalNames.Action.PlayerOpenCloseCabinet, this, PlayerOpenCloseCabinet);
+        SignalBus.Instance.On(SignalNames.Action.StorageItemDragAndDrop, this, StorageItemDragAndDrop);
     }
     
     private void PlayerOpenCloseCabinet(Variant[] args)
@@ -64,6 +64,24 @@ public partial class Main : Node2D
         {
             cabinet.Data = cabinet?.Data;
             _storageUi.Data = null;
+        }
+    }
+    
+    private void StorageItemDragAndDrop(Variant[] args)
+    {
+        var target = args[0].AsGodotObject() as StorageSlotTexture;
+        var source = args[1].AsGodotObject() as StorageSlotTexture;
+    
+        if (target != null && source != null)
+        {
+            var targetMeta = target.GetMeta("meta").AsGodotDictionary();
+            var sourceMeta= source.GetMeta("meta").AsGodotDictionary();
+            Global.StorageService.UpdateItemOrder(sourceMeta["ItemId"].AsInt32(), targetMeta["ItemOrder"].AsInt32());
+            if (targetMeta.ContainsKey("ItemId") && targetMeta["ItemId"].AsInt32() > 0)
+            {
+                Global.StorageService.UpdateItemOrder(targetMeta["ItemId"].AsInt32(), sourceMeta["ItemOrder"].AsInt32());
+            }
+            SignalBus.Instance.Emit(SignalNames.Action.PlayerOpenCloseCabinet, true, _player._cabinet);
         }
     }
 
@@ -136,24 +154,7 @@ public partial class Main : Node2D
     //     }
     // }
     
-    // private void OnUpdateStorageItemOrder(Variant[] args)
-    // {
-    //     var target = args[0].AsGodotObject() as StorageSlotTexture;
-    //     var source = args[1].AsGodotObject() as StorageSlotTexture;
-    //
-    //     if (target != null && source != null)
-    //     {
-    //         var targetMeta = target.GetMeta("meta").AsGodotDictionary();
-    //         var sourceMeta= source.GetMeta("meta").AsGodotDictionary();
-    //         Global.StorageService.UpdateItemOrder(sourceMeta["ItemId"].AsInt32(), targetMeta["ItemOrder"].AsInt32());
-    //         if (targetMeta.ContainsKey("ItemId") && targetMeta["ItemId"].AsInt32() > 0)
-    //         {
-    //             Global.StorageService.UpdateItemOrder(targetMeta["ItemId"].AsInt32(), sourceMeta["ItemOrder"].AsInt32());
-    //         }
-    //         var data = Global.StorageService.GetStorageByCode(_cabinet.Code);
-    //         _storageUi.Data = data;
-    //     }
-    // }
+    
     //
     // private void OnReceiveCurrentPlayerPanel(Variant[] args)
     // {
